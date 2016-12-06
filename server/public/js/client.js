@@ -1,10 +1,12 @@
-var app = angular.module('crow', ['ngRoute']);
+var crow = angular.module('crow', ['ngRoute']);
 
-app.config(['$routeProvider', function($routeProvider) {
+console.log('angular running');
+
+crow.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/drafts', {
       templateUrl: '/views/templates/drafts.html',
-      controller: 'DraftsController'
+      controller: 'DraftsController',
       controllerAs: 'drafts'
     })
     .when('/tweet', {
@@ -33,6 +35,6 @@ app.config(['$routeProvider', function($routeProvider) {
       controllerAs: 'settings'
     })
     .otherwise({
-      redirectTo: 'DraftsController'
+      redirectTo: 'login'
     });
 }]);
