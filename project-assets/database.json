@@ -1,0 +1,39 @@
+// create database
+use crow
+
+// create collection
+db.createCollection(users)
+
+// insert test data
+db.users.insert({
+  email: 'hello@hisaac.net',
+  name: 'Isaac Halvorson',
+  username: 'hisaac',
+  date_joined: 2016-12-06,
+  tweets: [
+    {
+      twitter_id: '',
+      url: 'https://twitter.com/hisaac/status/805922777979121664',
+      posted: true,
+      date_posted: 2016-12-05,
+      date_created: 2016-12-05,
+      hashtags: '',
+      mentions: '',
+      hearts: 0,
+      retweets: 0,
+      tweet: "I just found out there's a VR mod for Amnesia: The Dark Descent, and now I'm terrified just thinking about it."
+    },
+    {
+      twitter_id: '',
+      url: 'https://twitter.com/hisaac/status/805778170439987200',
+      posted: true,
+      date_posted: 2016-12-05,
+      date_created: 2016-12-05,
+      hashtags: '',
+      mentions: '',
+      hearts: 0,
+      retweets: 0,
+      tweet: "DNS issues 🙄"
+    }
+  ]
+})
