@@ -1,6 +1,7 @@
-var crow = angular.module('crow', ['ngRoute']);
+var crow = angular.module('crow', ['ngRoute', 'firebase']);
+var verbose = true; // enable for verbose logging in the console
 
-console.log('angular running');
+if(verbose){console.log('Angular running')};
 
 crow.config(['$routeProvider', function($routeProvider) {
   $routeProvider
