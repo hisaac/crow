@@ -1,6 +1,8 @@
 //----------------------------------------------------------------------------//
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
 //----------------------------------------------------------------------------//
 
 var tweetSchema = new Schema({
@@ -18,14 +20,14 @@ var tweetSchema = new Schema({
 
 //-------------------- FROM SIGMA-MONGOOSE-INTRO-LECTURE ---------------------//
 
-personSchema.pre('save', function(next) {
+tweetSchema.pre('save', function(next) {
   next();
 });
 
-// step 2 - create the model
-var Person = mongoose.model('Person', personSchema);
+// create model from schema
+var Tweet = mongoose.model('Tweet', tweetSchema);
 
-// step 3 - export our model
-module.exports = Person;
+// export the model
+module.exports = Tweet;
 
 //----------------------------------------------------------------------------//

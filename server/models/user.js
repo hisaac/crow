@@ -1,6 +1,9 @@
 //----------------------------------------------------------------------------//
-var mongoose = require ('mongoose');
+
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
+//----------------------------------------------------------------------------//
 
 var userSchema = new Schema({
   email: String,
@@ -10,15 +13,14 @@ var userSchema = new Schema({
   tweets: { [tweet] }
 });
 
-//-------------------- FROM SIGMA-MONGOOSE-INTRO-LECTURE ---------------------//
-
-personSchema.pre('save', function(next) {
+userSchema.pre('save', function(next) {
   next();
 });
 
-// step 2 - create the model
-var Person = mongoose.model('Person', personSchema);
+// create model from schema
+var User = mongoose.model('User', userSchema);
 
-// step 3 - export our model
-module.exports = Person;
+// export model
+module.exports = User;
+
 //----------------------------------------------------------------------------//
