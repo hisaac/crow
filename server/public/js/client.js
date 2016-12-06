@@ -5,26 +5,32 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/drafts', {
       templateUrl: '/views/templates/drafts.html',
       controller: 'DraftsController'
+      controllerAs: 'drafts'
     })
     .when('/tweet', {
       templateUrl: '/views/templates/tweet.html',
-      controller: 'TweetController'
+      controller: 'TweetController',
+      controllerAs: 'tweet'
     })
     .when('/login', {
       templateUrl: '/views/templates/login.html',
-      controller: 'LoginController'
+      controller: 'LoginController',
+      controllerAs: 'login'
     })
     .when('/about', {
       templateUrl: '/views/templates/about.html',
-      controller: 'AboutController'
+      controller: 'AboutController',
+      controllerAs: 'about'
     })
     .when('/posts', {
       templateUrl: '/views/templates/posts.html',
-      controller: 'PostsController'
+      controller: 'PostsController',
+      controllerAs: 'posts'
     })
     .when('/settings', {
       templateUrl: '/views/templates/settings.html',
-      controller: 'SettingsController'
+      controller: 'SettingsController',
+      controllerAs: 'settings'
     })
     .otherwise({
       redirectTo: 'DraftsController'
