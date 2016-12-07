@@ -13,4 +13,6 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
     });
   };
 
+
+
 }]);
