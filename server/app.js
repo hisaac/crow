@@ -5,7 +5,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
-var databaseUri = 'mongodb://localhost:27017/crow'
+var databaseUri = 'mongodb://localhost:27017/crow';
+var postTweet = require('./modules/post-tweet.module');
 
 //----------------------- MONGOOSE CONNECTION HANDLING -----------------------//
 
@@ -19,7 +20,9 @@ mongoose.connection.on('error', function(error) {
   console.log('mongoose connection error: ', error);
 });
 
-//---------------------------------- ROUTES ----------------------------------//
+//----------------------------- ROUTES & MODULES -----------------------------//
+
+// app.post('/postTweet', postTweet);
 
 //---------------------------------- SETUP -----------------------------------//
 

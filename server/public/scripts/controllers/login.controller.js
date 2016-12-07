@@ -13,6 +13,12 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
     });
   };
 
-
+  // auth.$onAuthStateChanged(function(firebaseUser){
+  //   if(firebaseUser){
+  //
+  //   } else {
+  //     console.log('user not logged in');
+  //   }
+  // });
 
 }]);
