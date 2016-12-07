@@ -3,6 +3,14 @@ var verbose = true; // enable for verbose logging in the console
 
 if(verbose){console.log( 'Angular running' )};
 
+// instantiate FastClick
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+    if(verbose){console.log('FastClick running');};
+  }, false);
+}
+
 crow.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/drafts', {
