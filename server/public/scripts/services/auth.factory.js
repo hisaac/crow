@@ -4,8 +4,8 @@ crow.factory('AuthFactory', [function() {
   return userAuthInfo;
 }]);
 
-// returned data
-
+//---- returned data looks like this:
+//
 // userAuthInfo {
 //   credential {
 //     accessToken: "string of characters",

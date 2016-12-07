@@ -5,9 +5,10 @@ crow.controller('SettingsController', ['$http', '$firebaseAuth', function($http,
   var auth = $firebaseAuth();
 
   self.logOut = function(){
-    auth.$signOut().then(function(){
-      
-      console.log('Logging the user out!');
+    auth.signOut().then(function() {
+      console.log('user signed out');
+    }).catch(function(error){
+      console.log('error signing out');
     });
   };
 
