@@ -1,14 +1,13 @@
-crow.controller('LoginController', ['$http', '$firebaseAuth', function($http, $firebaseAuth){
+crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', function($http, $firebaseAuth, AuthFactory){
   if(verbose){console.log( 'LoginController is running' )};
 
   var self = this;
   var auth = $firebaseAuth();
+  self.factory = AuthFactory;
 
   self.logIn = function(){
     auth.$signInWithPopup('twitter').then(function(firebaseUser) {
-      console.log('Firebase User: ', firebaseUser.user);
-      console.log('User access token: ', firebaseUser.credential.accessToken);
-      console.log('User secret: ', firebaseUser.credential.secret);
+      self.factory.userAuthInfo = firebaseUser;
     }).catch(function(error) {
       console.log('Authentication failed: ', error);
     });
