@@ -41,3 +41,5 @@ If you need support when using the app, feel free to contact me at <mailto:hello
 - [Trello](https://trello.com)
 - [Slack](https://slack.com)
 - [Dash](https://kapeli.com/dash)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [Express](http://expressjs.com)

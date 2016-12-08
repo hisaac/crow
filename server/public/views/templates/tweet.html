@@ -4,13 +4,19 @@
 
   <form>
     <div class="row">
-      <textarea class="u-full-width" placeholder="Tweet your heart out" id="tweetText"></textarea>
+      <textarea class="u-full-width" placeholder="Tweet your heart out" id="tweetText"
+        ng-model="tweet.tweetText"></textarea>
     </div>
     <div class="row">
       <button class="button one-half column">Save to Drafts</button>
-      <button class="button-primary one-half column">Post to Twitter</button>
+      <button class="button-primary one-half column"
+        ng-click="tweet.postTweet()">
+        Post to Twitter
+      </button>
     </div>
   </form>
+
+  <!-- <p>Auth: {{ tweet.factory.userAuthInfo }}</p> -->
 
 </main>
 <nav ng-include="'./views/templates/nav.html'"></nav>

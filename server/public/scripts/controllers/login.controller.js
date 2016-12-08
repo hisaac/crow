@@ -6,11 +6,13 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
   self.factory = AuthFactory;
 
   self.logIn = function(){
-    auth.$signInWithPopup('twitter').then(function(firebaseUser) {
-      self.factory.userAuthInfo = firebaseUser;
-    }).catch(function(error) {
-      console.log('Authentication failed: ', error);
-    });
+    auth.$signInWithPopup('twitter')
+      .then(function(firebaseUser) {
+        self.factory.userAuthInfo = firebaseUser;
+      })
+      .catch(function(error) {
+        console.log('Authentication failed: ', error);
+      });
   };
 
   // auth.$onAuthStateChanged(function(firebaseUser){

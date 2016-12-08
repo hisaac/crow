@@ -1,47 +1,17 @@
+//----------------------------------------------------------------------------//
+var express = require('express');
+var router = express.Router();
+var unirest = require('unirest');
+//----------------------------------------------------------------------------//
 
+router.post('/', function(req, res){
+  console.log('post-tweet.module running');
+  res.sendStatus(201);
+});
 
-// from Luke's API example
-//
-// require('dotenv').config();
-// var express = require('express');
-// var path = require('path');
-// var bodyParser = require('body-parser');
-// var app = express();
-// var portDecision = process.env.PORT || 3000;
-// var request = require('request');
-//
-//
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
-//
-// app.get('/', function(req, res){
-//   res.sendFile(path.resolve('./server/public/views/index.html'));
-// });
-//
-// app.get('/random', function(req, res){
-//   var key = process.env.PETFINDER_KEY;
-//
-//   var query = 'http://api.petfinder.com/';
-//   query += 'pet.getRandom';
-//   query += '?key=' + key;
-//   query += '&format=json';
-//   query += '&output=basic';
-//
-//   request(query, function(error, response){
-//     if(error){
-//       console.log(error);
-//       res.sendStatus(500);
-//     } else {
-//       console.log(response);
-//       var body = JSON.parse(response.body);
-//       res.send(body.petfinder.pet.contact.state);
-//     }
-//   });
-//
-// });
-//
-// app.use(express.static('server/public'));
-//
-// app.listen(portDecision, function(){
-//   console.log('running on port', portDecision);
-// });
+module.exports = router;
+
+// unirest.post('https://api.twitter.com/1.1/statuses/update.json?status=is+this+thing+on')
+//   .headers(
+//     'OAuth oauth_consumer_key="AvdNGsmLJ2mRNRMeo9gElXVmI", oauth_nonce="4rqsCxWHNurWWvrEqCpOSGWIUtlbfmGS", oauth_signature="9ODaahDsBEuzXDIxRKS670v2DVU%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1481144401", oauth_token="804356294559854592-rmLqCSTzQpTrB0dKMBr2arvrqD0PI1E", oauth_version="1.0"'
+//   );
