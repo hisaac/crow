@@ -1,17 +1,26 @@
 //----------------------------------------------------------------------------//
 var express = require('express');
 var router = express.Router();
-var unirest = require('unirest');
+var request = require('request');
+var Twit = require('twit');
 //----------------------------------------------------------------------------//
 
-router.post('/', function(req, res){
-  console.log('post-tweet.module running');
+router.post('/:tweetText', function(req, res){
+  console.log( 'post-tweet.module running' );
+
+  var T = new Twit({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token: process.env.TEST_USER_KEY,
+    access_token_secret: process.env.TEST_USER_SECRET,
+    timeout_ms: 60*1000
+  });
+
+  T.post('statuses/update', { status: req.params.tweetText }, function(err, data, response){
+    console.log('you did it');
+  });
+
   res.sendStatus(201);
 });
 
 module.exports = router;
-
-// unirest.post('https://api.twitter.com/1.1/statuses/update.json?status=is+this+thing+on')
-//   .headers(
-//     'OAuth oauth_consumer_key="AvdNGsmLJ2mRNRMeo9gElXVmI", oauth_nonce="4rqsCxWHNurWWvrEqCpOSGWIUtlbfmGS", oauth_signature="9ODaahDsBEuzXDIxRKS670v2DVU%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1481144401", oauth_token="804356294559854592-rmLqCSTzQpTrB0dKMBr2arvrqD0PI1E", oauth_version="1.0"'
-//   );

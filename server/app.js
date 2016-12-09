@@ -9,6 +9,12 @@ var postTweet = require('./modules/post-tweet.module');
 require('dotenv').config({path: __dirname + '/.env'});
 //----------------------------------------------------------------------------//
 
+//---------------------------------- SETUP -----------------------------------//
+
+app.use(bodyParser.json());
+app.use(express.static('./server/public'));
+app.listen(3000);
+
 //----------------------- MONGOOSE CONNECTION HANDLING -----------------------//
 
 mongoose.connect(databaseUri);
@@ -24,11 +30,3 @@ mongoose.connection.on('error', function(error) {
 //----------------------------- ROUTES & MODULES -----------------------------//
 
 app.use('/postTweet', postTweet);
-
-//---------------------------------- SETUP -----------------------------------//
-
-app.use(bodyParser.json());
-app.use(express.static('./server/public'));
-app.listen(3000);
-
-//----------------------------------------------------------------------------//

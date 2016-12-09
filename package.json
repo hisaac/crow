@@ -2,7 +2,7 @@
   "name": "crow",
   "version": "1.0.0",
   "description": "A place to craft your tweets before posting them",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js"
@@ -26,6 +26,7 @@
     "express": "^4.14.0",
     "firebase": "^3.6.3",
     "mongoose": "^4.7.1",
-    "unirest": "^0.5.1"
+    "request": "^2.79.0",
+    "twit": "^2.2.5"
   }
 }
