@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
 var databaseUri = 'mongodb://localhost:27017/crow';
-var postTweet = require('./modules/post-tweet.module');
-var postTweet = require('./modules/db');
+var twitter = require('./modules/twitter.module');
+var db = require('./modules/db');
 require('dotenv').config({path: __dirname + '/.env'});
 //----------------------------------------------------------------------------//
 
@@ -30,5 +30,5 @@ mongoose.connection.on('error', function(error) {
 
 //----------------------------- ROUTES & MODULES -----------------------------//
 
-app.use('/postTweet', postTweet);
+app.use('/twitter', twitter);
 app.use('/db', db);

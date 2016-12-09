@@ -6,3 +6,7 @@ var User = require('../models/user');
 var Tweet = require('../models/tweet');
 //----------------------------------------------------------------------------//
 
+// post data from firebase to the database
+router.post('/', function(req, res){
+  
+});
