@@ -37,6 +37,6 @@ username: ?
 dateJoined: from creation
 
 accessToken: user.credential.accessToken
-secret: user.credential.accessToekn
+secret: user.credential.secret
 
 */

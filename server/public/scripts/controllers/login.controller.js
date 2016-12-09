@@ -7,8 +7,13 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
 
   self.logIn = function(){
     auth.$signInWithPopup('twitter')
-      .then(function(firebaseUser) {
-        self.factory.userAuthInfo = firebaseUser;
+      .then(function(firebaseUser){
+        self.factory.uid = firebaseUser.user.providerData[0].uid;
+        self.factory.displayName = firebaseUser.user.providerData[0].displayName;
+        self.factory.photoURL = firebaseUser.user.providerData[0].photoURL;
+        self.factory.email = firebaseUser.user.providerData[0].email;
+        self.factory.accessToken = firebaseUser.credential.accessToken;
+        self.factory.secret = firebaseUser.credential.secret;
       })
       .catch(function(error) {
         console.log('Authentication failed: ', error);

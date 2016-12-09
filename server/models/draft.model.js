@@ -1,11 +1,9 @@
 //----------------------------------------------------------------------------//
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
 //----------------------------------------------------------------------------//
 
-var tweetSchema = new Schema({
+var draftSchema = new Schema({
   twitter_id: { type: String, default: "" },
   url: { type: String, default: "" },
   posted: { type: Boolean, default: false },
@@ -18,14 +16,14 @@ var tweetSchema = new Schema({
   tweet: { type: String, default: "" }
 });
 
-tweetSchema.pre('save', function(next) {
+draftSchema.pre('save', function(next) {
   next();
 });
 
 // create model from schema
-var Tweet = mongoose.model('Tweet', tweetSchema);
+var Draft = mongoose.model('Draft', draftSchema);
 
 // export the model
-module.exports = Tweet;
+module.exports = Draft;
 
 //----------------------------------------------------------------------------//
