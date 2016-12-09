@@ -1,6 +1,9 @@
 //----------------------------------------------------------------------------//
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('../models/user.model');
+var Draft = require('../models/draft.model').schema;
+var Post = require('../models/post.model').schema;
 //----------------------------------------------------------------------------//
 
 var userSchema = new Schema({
@@ -10,8 +13,8 @@ var userSchema = new Schema({
   email: String,
   username: String,
   dateJoined: { type: Date, default: Date.now },
-  posts: {[ post ]},
-  drafts: {[ draft ]}
+  posts: [ Post ],
+  drafts: [ Draft ]
 });
 
 userSchema.pre('save', function(next) {
@@ -26,17 +29,3 @@ module.exports = User;
 
 //----------------------------------------------------------------------------//
 
-/*
--- Map to where data is located --
-
-uid: user.providerData[0].uid
-displayName: user.providerData[0].displayName
-photoURL: user.providerData[0].photoURL
-email: user.providerData[0].email
-username: ?
-dateJoined: from creation
-
-accessToken: user.credential.accessToken
-secret: user.credential.secret
-
-*/

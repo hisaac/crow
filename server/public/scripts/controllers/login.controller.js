@@ -15,7 +15,10 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
         self.factory.accessToken = firebaseUser.credential.accessToken;
         self.factory.secret = firebaseUser.credential.secret;
       })
-      .catch(function(error) {
+      .then(function(){
+        $http.post('/db/createUser', self.factory);
+      })
+      .catch(function(error){
         console.log('Authentication failed: ', error);
       });
   };
