@@ -25,5 +25,4 @@ var Draft = mongoose.model('Draft', draftSchema);
 
 // export the model
 module.exports = Draft;
-
 //----------------------------------------------------------------------------//

@@ -14,6 +14,7 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
         self.factory.email = firebaseUser.user.providerData[0].email;
         self.factory.accessToken = firebaseUser.credential.accessToken;
         self.factory.secret = firebaseUser.credential.secret;
+        console.log('user info:', self.factory);
       })
       .then(function(){
         $http.post('/db/createUser', self.factory);

@@ -7,7 +7,7 @@ var Draft = require('../models/draft.model');
 var Post = require('../models/post.model');
 //----------------------------------------------------------------------------//
 
-// post data from firebase to the database
+// post user data from firebase to the database
 router.post('/createUser', function(req, res){
   var query = { uid: req.body.uid };
   var update = {
@@ -18,8 +18,19 @@ router.post('/createUser', function(req, res){
   var options = {upsert: true, new: true, setDefaultsOnInsert: true };
 
   User.findOneAndUpdate(query, update, options, function(error, result){
-    if (error) return;
+    if(error){
+      return error;
+    }
   });
+
+  res.sendStatus(201);
 });
+
+// post draft data to the database
+router.post('/draft', function(req, res){
+  
+})
+
+// post post data to the database
 
 module.exports = router;
