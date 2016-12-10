@@ -17,6 +17,9 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
         console.log('user info:', self.factory);
       })
       .then(function(){
+        $http.get('/twitter/getInfo/', self.factory.uid);
+      })
+      .then(function(){
         $http.post('/db/createUser', self.factory);
       })
       .catch(function(error){

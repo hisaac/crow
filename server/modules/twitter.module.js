@@ -18,15 +18,21 @@ router.post('/postStatus', function(req, res){
   });
 
   T.post('statuses/update', { status: req.params.tweetText }, function(err, data, response){
-    console.log('you posted ' + req.params.tweetText + 'to Twitter!');
+    if(err){
+      console.log('Post to twitter error', err);
+      res.sendStatus(504);
+    } else {
+      console.log('you posted ' + req.params.tweetText + 'to Twitter!');
+      res.sendStatus(201);
+    }
   });
 
-  res.sendStatus(201);
 });
 
 // get info from twitter
-// router.get('/getInfo', function(req,res){
-
-// });
+router.get('/getInfo', function(req,res){
+  console.log('req.body', req.body);
+  res.sendStatus(200);
+});
 
 module.exports = router;
