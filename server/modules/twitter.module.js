@@ -30,9 +30,19 @@ router.post('/postStatus', function(req, res){
 });
 
 // get info from twitter
-router.get('/getInfo', function(req,res){
-  console.log('req.body', req.body);
-  res.sendStatus(200);
+router.get('/getInfo/:uid', function(req, res){
+  
+  var T = new Twit({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    app_only_auth: true,
+    timeout_ms: 60*1000
+  });
+
+  T.get('users/lookup', { user_id: req.params.uid }, function(err, data, response){
+    res.status(200).send(data[0].screen_name);
+  });
+
 });
 
 module.exports = router;

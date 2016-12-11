@@ -11,6 +11,7 @@ var Post = require('../models/post.model');
 router.post('/createUser', function(req, res){
   var query = { uid: req.body.uid };
   var update = {
+    username: req.body.username,
     displayName: req.body.displayName,
     photoURL: req.body.photoURL,
     email: req.body.email
