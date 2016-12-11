@@ -28,13 +28,13 @@ router.post('/createUser', function(req, res){
 });
 
 // post draft data to the database
-router.post('/draft', function(req, res){
+router.post('/draft/:tweetText', function(req, res){
   
-})
+});
 
 // post post data to the database
 router.post('/post', function(req, res){
   
-})
+});
 
 module.exports = router;

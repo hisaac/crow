@@ -25,7 +25,7 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
           });
       })
       .then(function(){
-        console.log('create user');
+        console.log('create user in database');
         $http.post('/db/createUser', self.factory);
       })
       .catch(function(error){

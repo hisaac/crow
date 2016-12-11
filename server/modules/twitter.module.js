@@ -6,14 +6,14 @@ var Twit = require('twit');
 //----------------------------------------------------------------------------//
 
 // post status to twitter
-router.post('/postStatus', function(req, res){
+router.post('/postTweet/:tweetText', function(req, res){
   console.log( 'postStatus request running' );
 
   var T = new Twit({
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
-    access_token: 'not sure yet where to get this from',
-    access_token_secret: 'not sure yet where to get this from',
+    access_token: req.body.accessToken,
+    access_token_secret: req.body.secret,
     timeout_ms: 60*1000
   });
 
@@ -22,8 +22,7 @@ router.post('/postStatus', function(req, res){
       console.log('Post to twitter error', err);
       res.sendStatus(504);
     } else {
-      console.log('you posted ' + req.params.tweetText + 'to Twitter!');
-      res.sendStatus(201);
+      res.status(201).send(data);
     }
   });
 
