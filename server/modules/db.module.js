@@ -31,24 +31,29 @@ router.post('/createUser', function(req, res){
 router.post('/draft/newBlank', function(req, res){
   User.findOne({ uid: req.body.uid }, function(error, user){
     user.drafts.push(new Draft);
-    user.save();
+    if(error){
+      res.sendStatus(500);
+    } else {
+      user.save();
+      res.status(201).send(user.drafts[user.drafts.length-1]);
+    }
   });
 });
 
 // post draft data to the database
-// router.post('/draft/:tweetText', function(req, res){
-//   var query = { uid: req.body.uid };
-//   var update = { tweet: req.params.tweetText };
-//   var options = { upsert: true, new: true, setDefaultsOnInsert: true };
+router.post('/draft/saveDraft/:tweetText', function(req, res){
+  var query = { 'drafts._id': req.body._id };
+  var update = { 'drafts.$.text': req.params.tweetText };
+  var options = { upsert: true, new: true, setDefaultsOnInsert: true };
 
-//   Draft.findOneAndUpdate(query, update, options, function(error, result){
-//     if(error){
-//       res.sendStatus(500);
-//     } else {
-//       res.sendStatus(201);
-//     }
-//   });
-// });
+  User.findOneAndUpdate(query, update, options, function(error, result){
+    if(error){
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
 
 // post post data to the database
 router.post('/post', function(req, res){

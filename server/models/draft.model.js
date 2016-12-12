@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 //----------------------------------------------------------------------------//
 
 var draftSchema = new Schema({
-  date_created: { type: Date, default: Date.now },
-  tweet: { type: String, default: "" }
+  dateCreated: { type: Date, default: Date.now },
+  text: { type: String, default: "" }
 });
 
 draftSchema.pre('save', function(next) {
