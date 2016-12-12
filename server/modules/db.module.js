@@ -16,21 +16,39 @@ router.post('/createUser', function(req, res){
     photoURL: req.body.photoURL,
     email: req.body.email
   };
-  var options = {upsert: true, new: true, setDefaultsOnInsert: true };
+  var options = { upsert: true, new: true, setDefaultsOnInsert: true };
 
   User.findOneAndUpdate(query, update, options, function(error, result){
     if(error){
-      return error;
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(201);
     }
   });
+});
 
-  res.sendStatus(201);
+// create new blank draft
+router.post('/draft/newBlank', function(req, res){
+  User.findOne({ uid: req.body.uid }, function(error, user){
+    user.drafts.push(new Draft);
+    user.save();
+  });
 });
 
 // post draft data to the database
-router.post('/draft/:tweetText', function(req, res){
-  
-});
+// router.post('/draft/:tweetText', function(req, res){
+//   var query = { uid: req.body.uid };
+//   var update = { tweet: req.params.tweetText };
+//   var options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+//   Draft.findOneAndUpdate(query, update, options, function(error, result){
+//     if(error){
+//       res.sendStatus(500);
+//     } else {
+//       res.sendStatus(201);
+//     }
+//   });
+// });
 
 // post post data to the database
 router.post('/post', function(req, res){
@@ -38,3 +56,16 @@ router.post('/post', function(req, res){
 });
 
 module.exports = router;
+
+
+// User.findOneAndUpdate(
+//   {
+//     '_id': "5846d71b5de4b846897b0529",
+//     'books._id': req.params.book_id
+//   },
+//   {
+//     $set:
+//       {
+//         'books.$.page_at' : req.body.updatedPageNumber
+//       }
+//   }

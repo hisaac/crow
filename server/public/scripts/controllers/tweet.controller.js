@@ -17,12 +17,12 @@ crow.controller('TweetController', ['$http', 'AuthFactory', function($http, Auth
   self.saveDraft = function(){
     if(verbose){console.log( 'entered save draft function' )};
 
-    $http.post('/db/draft/' + self.tweetText)
+    $http.post('/db/draft/' + self.tweetText, self.factory)
       .then(function(res){
         console.log('response from server: ', res);
       });
 
-  }
+  };
 
 }]);
 

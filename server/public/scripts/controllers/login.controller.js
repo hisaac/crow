@@ -1,9 +1,8 @@
-crow.controller('LoginController', ['$http', '$location', '$q', '$firebaseAuth', 'AuthFactory', function($http, $location, $q, $firebaseAuth, AuthFactory){
+crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'AuthFactory', function($http, $location, $firebaseAuth, AuthFactory){
   if(verbose){console.log( 'LoginController is running' )};
 
   var self = this;
   var auth = $firebaseAuth();
-  var deferred = $q.defer();
   self.factory = AuthFactory;
 
   self.logIn = function(){
