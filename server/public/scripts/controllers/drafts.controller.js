@@ -3,4 +3,16 @@ crow.controller('DraftsController', ['$http', 'DraftFactory', 'AuthFactory', '$l
   var self = this;
   self.draftFactory = DraftFactory;
   self.authFactory = AuthFactory;
+
+  self.userDrafts = [];
+
+  getDrafts();
+
+  function getDrafts(userData){
+    $http.get('/db/getDrafts/' + self.authFactory.uid)
+      .then(function(res){
+        self.userDrafts = res.data;
+      });
+  };
+
 }]);

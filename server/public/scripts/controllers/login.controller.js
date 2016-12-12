@@ -24,12 +24,10 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
             self.factory.username = res.data;
             console.log('user info:', self.factory);
             writeToDb();
+            $location.path('/drafts');
           });
       })
       // redirect user to drafts page after login
-      .then(function(){
-        $location.path('/drafts');
-      })
       .catch(function(error){
         console.log('Authentication failed: ', error);
       });

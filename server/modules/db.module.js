@@ -55,9 +55,14 @@ router.post('/draft/saveDraft/:tweetText', function(req, res){
   });
 });
 
-// post post data to the database
-router.post('/post', function(req, res){
-  
+router.get('/getDrafts/:uid', function(req, res){
+  User.findOne({ uid: req.params.uid }, function(error, result){
+    if(error){
+      res.sendStatus(500);
+    } else {
+      res.send(result.drafts);
+    }
+  });
 });
 
 module.exports = router;
