@@ -1,8 +1,9 @@
-crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', function($http, $firebaseAuth, AuthFactory){
+crow.controller('LoginController', ['$http', '$location', '$q', '$firebaseAuth', 'AuthFactory', function($http, $location, $q, $firebaseAuth, AuthFactory){
   if(verbose){console.log( 'LoginController is running' )};
 
   var self = this;
   var auth = $firebaseAuth();
+  var deferred = $q.defer();
   self.factory = AuthFactory;
 
   self.logIn = function(){
@@ -16,23 +17,29 @@ crow.controller('LoginController', ['$http', '$firebaseAuth', 'AuthFactory', fun
         self.factory.accessToken  = firebaseUser.credential.accessToken;
         self.factory.secret       = firebaseUser.credential.secret;
       })
+      // get info from twitter
       .then(function(){
         $http.get('/twitter/getInfo/' + self.factory.uid)
           .then(function(res){
             console.log('get username');
             self.factory.username = res.data;
             console.log('user info:', self.factory);
+            writeToDb();
           });
       })
+      // redirect user to drafts page after login
       .then(function(){
-        console.log('create user in database');
-        $http.post('/db/createUser', self.factory);
+        $location.path('/drafts');
       })
       .catch(function(error){
         console.log('Authentication failed: ', error);
       });
   };
 
-}]);
+// writes data to database
+function writeToDb(){
+  $http.post('/db/createUser', self.factory);
+  console.log('write to database');
+};
 
-// $location
+}]);
