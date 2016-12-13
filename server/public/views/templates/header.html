@@ -1,3 +1,7 @@
 <div ng-controller="HeaderController as header">
-  <h1>@{{ header.factory.username }}</h1>
+  <div id="userTwitterInfo">
+    <img ng-src="{{ header.factory.photoURL }}" />
+    <h3>@{{ header.factory.username }}</h3>
+  </div>
+  <h3>Crow</h3>
 </div>
