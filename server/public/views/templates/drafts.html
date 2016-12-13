@@ -1,11 +1,14 @@
 <header ng-include="'./views/templates/header.html'"></header>
 <main>
-  <h1 class="page-name">Drafts</h1>
+  <!--<h3 class="page-name">Drafts</h3>-->
 
-  <ul>
-    <li ng-repeat="draft in drafts.userDrafts">
-      <a ng-click="drafts.draftToFactory(this.draft)" ng-href="#tweet">{{ draft.text }}</a>
-    </li>
+  <ul id="draftList">
+    <a ng-click="drafts.draftToFactory(this.draft)" ng-href="#tweet" ng-repeat="draft in drafts.userDrafts">
+      <li class="draft-item">
+        <p class="draft-text">{{ draft.text }}</p>
+        <p class="draft-date">{{ draft.dateCreated | date: 'yyyy-MM-dd' }}</p>
+      </li>
+    </a>
   </ul>
 
 </main>

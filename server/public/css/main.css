@@ -9,7 +9,7 @@ header h3 {
   margin-right: 10px;
 }
 
-/*1. sticky footer*/
+/* 1. sticky footer */
 
 body {
   display: flex; /* 1 */
@@ -20,10 +20,36 @@ body {
 main {
   flex: 1; /* 1 */
   padding: 10px;
+  overflow: scroll;
 }
 
 .page-name {
   text-align: center;
+}
+
+.draft-item {
+  list-style: none;
+  background: gainsboro;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+.draft-date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: auto 5px;
+  font-size: .9em;
+}
+
+.draft-text {
+  margin: auto;
+}
+
+#draftList a {
+  text-decoration: none;
+  color: black;
 }
 
 #userTwitterInfo h3 {
