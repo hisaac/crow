@@ -39,7 +39,7 @@ router.get('/getInfo/:uid', function(req, res){
   });
 
   T.get('users/lookup', { user_id: req.params.uid }, function(err, data, response){
-    res.status(200).send(data[0].screen_name);
+    res.status(200).send(data[0]);
   });
 
 });

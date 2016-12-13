@@ -3,28 +3,29 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
 
   var self = this;
   var auth = $firebaseAuth();
-  self.factory = UserFactory;
+  self.userFactory = UserFactory;
 
   if(currentAuth){
-    $location.path('/drafts');
+    self.userFactory.uid = currentAuth.providerData[0].uid;
+    getUserData();
   }
 
   self.logIn = function(){
     auth.$signInWithPopup('twitter')
       // move firebase data into factory
       .then(function(firebaseUser){
-        self.factory.uid          = firebaseUser.user.providerData[0].uid;
-        self.factory.displayName  = firebaseUser.user.providerData[0].displayName;
-        self.factory.photoURL     = firebaseUser.user.providerData[0].photoURL;
-        self.factory.email        = firebaseUser.user.providerData[0].email;
-        self.factory.accessToken  = firebaseUser.credential.accessToken;
-        self.factory.secret       = firebaseUser.credential.secret;
+        self.userFactory.uid          = firebaseUser.user.providerData[0].uid;
+        self.userFactory.displayName  = firebaseUser.user.providerData[0].displayName;
+        self.userFactory.photoURL     = firebaseUser.user.providerData[0].photoURL;
+        self.userFactory.email        = firebaseUser.user.providerData[0].email;
+        self.userFactory.accessToken  = firebaseUser.credential.accessToken;
+        self.userFactory.secret       = firebaseUser.credential.secret;
       })
       // get info from twitter
       .then(function(){
-        $http.get('/twitter/getInfo/' + self.factory.uid)
+        $http.get('/twitter/getInfo/' + self.userFactory.uid)
           .then(function(res){
-            self.factory.username = res.data;
+            self.userFactory.username = res.data.screen_name;
             writeToDb();
             $location.path('/drafts');
           });
@@ -37,7 +38,15 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
 
 // writes data to database
 function writeToDb(){
-  $http.post('/db/createUser', self.factory);
+  $http.post('/db/createUser', self.userFactory);
 };
+
+// gets user data from Twitter and redirects to Drafts page
+function getUserData(){
+  $http.get('/twitter/getInfo/' + self.userFactory.uid)
+      .then(function(res){
+        console.log(res.data);
+      })
+}
 
 }]);
