@@ -9,7 +9,7 @@ crow.controller('DraftsController', ['$http', 'DraftFactory', 'AuthFactory', 'Us
 
   console.log(currentAuth);
 
-  // getDrafts();
+  getDrafts();
 
   function getDrafts(userData){
     $http.get('/db/getDrafts/' + self.userFactory.uid)

@@ -46,7 +46,12 @@ crow.config(['$routeProvider', function($routeProvider) {
     .when('/login', {
       templateUrl: '/views/templates/login.html',
       controller: 'LoginController',
-      controllerAs: 'login'
+      controllerAs: 'login',
+      resolve: {
+        "currentAuth": ["AuthFactory", function(AuthFactory){
+          return AuthFactory.$requireSignIn();
+        }]
+      }
     })
     .when('/about', {
       templateUrl: '/views/templates/about.html',
@@ -79,6 +84,6 @@ crow.config(['$routeProvider', function($routeProvider) {
       }
     })
     .otherwise({
-      redirectTo: 'login'
+      redirectTo: 'drafts'
     });
 }]);

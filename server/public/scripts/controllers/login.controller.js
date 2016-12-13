@@ -1,9 +1,13 @@
-crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'AuthFactory', 'UserFactory', function($http, $location, $firebaseAuth, AuthFactory, UserFactory){
+crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'AuthFactory', 'UserFactory', 'currentAuth', function($http, $location, $firebaseAuth, AuthFactory, UserFactory, currentAuth){
   if(verbose){console.log( 'LoginController is running' )};
 
   var self = this;
   var auth = $firebaseAuth();
   self.factory = UserFactory;
+
+  if(currentAuth){
+    $location.path('/drafts');
+  }
 
   self.logIn = function(){
     auth.$signInWithPopup('twitter')
