@@ -4,7 +4,8 @@
 
   <form>
     <div class="row">
-      <textarea class="u-full-width"  id="tweetText" placeholder="Tweet your heart out">{{ tweet.draftFactory.text }}</textarea>
+      <textarea class="u-full-width"  id="tweetText" placeholder="Tweet your heart out"
+        ng-model="tweet.draftFactory.text"></textarea>
     </div>
     <div class="row">
       <button class="button one-half column"

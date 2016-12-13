@@ -4,12 +4,10 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', func
   self.authFactory = AuthFactory;
   self.draftFactory = DraftFactory;
 
-  self.tweetText = '';
-
   self.postTweet = function(){
     if(verbose){console.log( 'entered post tweet function' )};
 
-    $http.post('/twitter/postTweet/' + self.tweetText, self.authFactory)
+    $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
       .then(function(res){
         console.log(res);
       });
@@ -17,9 +15,7 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', func
 
   self.saveDraft = function(){
     if(verbose){console.log( 'entered save draft function' )};
-
-    $http.post('/db/draft/saveDraft/' + self.tweetText, self.draftFactory);
-
+    $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory);
   };
 
 }]);
