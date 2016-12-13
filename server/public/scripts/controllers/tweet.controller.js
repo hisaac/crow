@@ -1,13 +1,14 @@
-crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', function($http, AuthFactory, DraftFactory){
+crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', 'UserFactory', function($http, AuthFactory, DraftFactory, UserFactory){
   if(verbose){console.log( 'TweetController is running' )};
   var self = this;
   self.authFactory = AuthFactory;
+  self.userFactory = UserFactory;
   self.draftFactory = DraftFactory;
 
   self.postTweet = function(){
     if(verbose){console.log( 'entered post tweet function' )};
 
-    $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
+    $http.post('/twitter/postTweet/' + self.draftFactory.text, self.userFactory)
       .then(function(res){
         console.log(res);
       });

@@ -1,9 +1,9 @@
-crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'AuthFactory', function($http, $location, $firebaseAuth, AuthFactory){
+crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'AuthFactory', 'UserFactory', function($http, $location, $firebaseAuth, AuthFactory, UserFactory){
   if(verbose){console.log( 'LoginController is running' )};
 
   var self = this;
   var auth = $firebaseAuth();
-  self.factory = AuthFactory;
+  self.factory = UserFactory;
 
   self.logIn = function(){
     auth.$signInWithPopup('twitter')
@@ -20,9 +20,7 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
       .then(function(){
         $http.get('/twitter/getInfo/' + self.factory.uid)
           .then(function(res){
-            console.log('get username');
             self.factory.username = res.data;
-            console.log('user info:', self.factory);
             writeToDb();
             $location.path('/drafts');
           });
@@ -36,7 +34,6 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
 // writes data to database
 function writeToDb(){
   $http.post('/db/createUser', self.factory);
-  console.log('write to database');
 };
 
 }]);

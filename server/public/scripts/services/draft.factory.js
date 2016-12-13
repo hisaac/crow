@@ -1,5 +1,5 @@
 crow.factory('DraftFactory', [function() {
-  console.log( 'Draft Factory running' );
+  if(verbose){console.log( 'Draft Factory running' );}
 
   var currentDraftInfo = {
     _id: null,
