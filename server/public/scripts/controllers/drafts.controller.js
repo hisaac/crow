@@ -15,4 +15,10 @@ crow.controller('DraftsController', ['$http', 'DraftFactory', 'AuthFactory', '$l
       });
   };
 
+  self.draftToFactory = function(clickedDraft){
+    self.draftFactory._id = clickedDraft._id;
+    self.draftFactory.text = clickedDraft.text;
+    self.draftFactory.dateCreated = clickedDraft.dateCreated;
+  };
+
 }]);
