@@ -1,5 +1,5 @@
 crow.factory('AuthFactory', [function() {
-  console.log( 'Auth Factory running' );
+  if(verbose){console.log( 'Auth Factory running' );}
 
   var userAuthInfo = {
     uid: null,

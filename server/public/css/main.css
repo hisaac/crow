@@ -1,21 +1,86 @@
 header {
-  text-align: center;
   background-color: gainsboro;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-/*1. sticky footer*/
+nav {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  display: inline-flex;
+  justify-content: center;
+  background: gainsboro;
+  padding-top: 10px;
+  box-shadow: 2px -2px 2px 1px rgba(0, 0, 0, 0.2);
+}
 
-body {
-  display: flex; /* 1 */
-  min-height: 100vh; /* 1 */
-  flex-direction: column; /* 1 */
+#appName {
+  text-align: right;
+  float: right;
+  margin: 5px;
 }
 
 main {
-  flex: 1; /* 1 */
-  padding: 10px;
+  padding: 70px 10px 10px 10px;
+  z-index: -1;
+}
+
+.nav-buttons {
+  display: inline-flex;
+  /*justify-content: space-around;*/
+}
+
+.nav-button {
+  margin: auto 10px;
+  text-align: center;
 }
 
 .page-name {
   text-align: center;
+}
+
+.draft-item {
+  list-style: none;
+  background: gainsboro;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+.draft-date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: auto 5px;
+  font-size: .9em;
+}
+
+.draft-text {
+  margin: auto;
+}
+
+#draftList a {
+  text-decoration: none;
+  color: black;
+}
+
+#userTwitterInfo {
+  float: left;
+}
+
+#userTwitterInfo h3 {
+  float: left;
+  margin: 5px;
+  margin-left: 0;
+}
+
+#userTwitterInfo img {
+  float: left;
+  width: 35px;
+  margin: 5px;
 }
