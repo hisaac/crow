@@ -1,13 +1,14 @@
 <div ng-controller="NavController as nav">
-  <div class="row">
-    <a href="#settings" class="two columns offset-by-two"><button class="button">Settings</button></a>
-    <a href="#drafts" class="two columns"><button class="button">Drafts</button></a>
-    <a href="#posts" class="two columns"><button class="button">Posts</button></a>
-    <a href="#tweet" class="two columns">
-      <button class="button"
+  <div class="row nav-buttons">
+    <a href="#tweet" class="two columns nav-button">
+      <button class="button-warning"
         ng-click="nav.createBlankDraft()">
         +
       </button>
     </a>
+    <a href="#drafts" class="two columns nav-button"><button class="button-warning">Drafts</button></a>
+    <a href="#settings" class="two columns offset-by-two nav-button"><button class="button-warning">Settings</button></a>
+    <!--<a href="#posts" class="two columns nav-button"><button class="button">Posts</button></a>-->
+
   </div>
 </div>

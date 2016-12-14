@@ -15,6 +15,9 @@ crow.controller('LoginController', ['$http', '$location', '$firebaseAuth', 'Auth
         self.factory.email        = firebaseUser.user.providerData[0].email;
         self.factory.accessToken  = firebaseUser.credential.accessToken;
         self.factory.secret       = firebaseUser.credential.secret;
+
+        console.log('accesstoken: ', self.factory.accessToken);
+        console.log('secret: ', self.factory.secret);
       })
       // get info from twitter
       .then(function(){
