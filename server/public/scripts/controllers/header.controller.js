@@ -1,5 +1,5 @@
 crow.controller('HeaderController', ['AuthFactory', function(AuthFactory){
-  console.log('header controller is running');
+  if(verbose){console.log( 'Header Controller is running' );}
   var self = this;
   self.factory = AuthFactory;
 }]);

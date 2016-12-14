@@ -1,14 +1,14 @@
 crow.factory('AuthFactory', [function() {
-  console.log( 'Auth Factory running' );
+  if(verbose){console.log( 'Auth Factory running' );}
 
   var userAuthInfo = {
-    uid: '804356294559854592',
-    username: 'hisaac0',
+    uid: null,
+    username: null,
     displayName: null,
-    photoURL: 'http://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png',
+    photoURL: null,
     email: null,
-    accessToken: '804356294559854592-CNDjNsVz6hKYWKaqLOtQO4CmXKXCEY8',
-    secret: 'WLtAy1Ajmmnskmib9kVe0MTT5VxWGLblcy2hKXjWam3qn'
+    accessToken: null,
+    secret: null
   };
   
   return userAuthInfo;
