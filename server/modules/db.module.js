@@ -14,7 +14,9 @@ router.post('/createUser', function(req, res){
     username: req.body.username,
     displayName: req.body.displayName,
     photoURL: req.body.photoURL,
-    email: req.body.email
+    email: req.body.email,
+    accessToken: req.body.accessToken,
+    secret: req.body.secret
   };
   var options = { upsert: true, new: true, setDefaultsOnInsert: true };
 

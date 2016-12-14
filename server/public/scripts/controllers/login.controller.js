@@ -44,9 +44,6 @@ function writeToDb(){
 // gets user data from Twitter and redirects to Drafts page
 function getUserData(){
   $http.get('/twitter/getInfo/' + self.userFactory.uid)
-      .then(function(res){
-        console.log(res.data);
-      })
 }
 
 }]);

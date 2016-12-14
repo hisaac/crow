@@ -12,6 +12,8 @@ var userSchema = new Schema({
   photoURL: String,
   email: String,
   username: String,
+  accessToken: String,
+  secret: String,
   dateJoined: { type: Date, default: Date.now },
   posts: [ Post ],
   drafts: [ Draft ]
