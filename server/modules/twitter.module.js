@@ -7,7 +7,6 @@ var Twit = require('twit');
 
 // post status to twitter
 router.post('/postTweet/:tweetText', function(req, res){
-  console.log( 'postStatus request running' );
 
   var T = new Twit({
     consumer_key: process.env.CONSUMER_KEY,
@@ -28,7 +27,17 @@ router.post('/postTweet/:tweetText', function(req, res){
 
 });
 
-// get info from twitter
+// get user token/secret from twitter
+router.get('/getToken/:uid', function(req, res){
+
+  var T = new Twit({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    app_only_auth: true,
+  })
+})
+
+// get user info from twitter
 router.get('/getInfo/:uid', function(req, res){
   
   var T = new Twit({

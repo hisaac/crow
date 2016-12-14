@@ -4,24 +4,24 @@ crow.controller('DraftsController', ['$http', 'DraftFactory', 'AuthFactory', 'Us
   self.draftFactory = DraftFactory;
   self.userFactory = UserFactory
   self.authFactory = AuthFactory;
-
+  
   self.userDrafts = [];
 
-  console.log(currentAuth);
+  self.userFactory.uid = currentAuth.providerData[0].uid;
 
   getDrafts();
-
-  function getDrafts(userData){
-    $http.get('/db/getDrafts/' + self.userFactory.uid)
-      .then(function(res){
-        self.userDrafts = res.data;
-      });
-  };
 
   self.draftToFactory = function(clickedDraft){
     self.draftFactory._id = clickedDraft._id;
     self.draftFactory.text = clickedDraft.text;
     self.draftFactory.dateCreated = clickedDraft.dateCreated;
+  };
+
+  function getDrafts(){
+    $http.get('/db/getDrafts/' + self.userFactory.uid)
+      .then(function(res){
+        self.userDrafts = res.data;
+      });
   };
 
 }]);
