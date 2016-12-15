@@ -7,6 +7,17 @@ var Draft = require('../models/draft.model');
 var Post = require('../models/post.model');
 //----------------------------------------------------------------------------//
 
+// check if user exists or not
+router.get('/checkdb/:uid', function (req, res){
+  User.find({ 'uid': req.params.uid }, function(error, result){
+    if(error){
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 // post user data from firebase to the database
 router.post('/createUser', function(req, res){
   var query = { uid: req.body.uid };
