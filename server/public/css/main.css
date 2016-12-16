@@ -25,6 +25,10 @@ nav {
   box-shadow: 2px -2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.warning {
+  background-color: lightcoral;
+}
+
 #loginContent {
   text-align: center;
 }
