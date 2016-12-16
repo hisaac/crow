@@ -1,10 +1,9 @@
 <header ng-include="'./views/templates/header.html'"></header>
 <main>
-  <h1 class="page-name">Tweet</h1>
 
-  <form>
+  <form class="container">
     <div class="row">
-      <textarea class="u-full-width"  id="tweetText" placeholder="Tweet your heart out"
+      <textarea class="u-full-width" id="tweetText" placeholder="Tweet your heart out"
         ng-model="tweet.draftFactory.text"></textarea>
     </div>
     <div class="row">
@@ -12,9 +11,17 @@
         ng-click="tweet.saveDraft()">
         Save to Drafts
       </button>
+    </div>
+    <div class="row">
       <button class="button-primary one-half column"
         ng-click="tweet.postTweet()">
         Post to Twitter
+      </button>
+    </div>
+    <div class="row">
+      <button class="button-danger one-half column"
+        ng-click="tweet.deleteDraft()">
+        Delete Draft
       </button>
     </div>
   </form>

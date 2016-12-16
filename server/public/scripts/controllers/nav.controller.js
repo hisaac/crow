@@ -1,5 +1,5 @@
 crow.controller('NavController', ['$http', '$location', 'AuthFactory', 'DraftFactory', function($http, $location, AuthFactory, DraftFactory){
-  console.log('nav controller is running');
+  if(verbose){console.log('nav controller is running');}
   var self = this;
   self.authFactory = AuthFactory;
   self.draftFactory = DraftFactory;
