@@ -10,10 +10,14 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
     if(self.draftFactory.text.length > 140){
       alert("Hold your horses bucko.\nThat's more than 140 characters!");
     } else {
-      $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
-      .then(function(){
-        self.deleteDraft();
-      });
+      var youSure = confirm('Take one more look and make sure you want to tweet this:\n\n"' + self.draftFactory.text + '"');
+
+      if (youSure === true){
+        $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
+          .then(function(){
+            deleteDraft();
+          });
+      }
     }
   };
 
@@ -30,17 +34,21 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
     var youSure = confirm('Are you sure you want to delete this draft?');
     
     if (youSure === true){
-      $http({
-        method: 'DELETE',
-        url: '/db/draft/deleteDraft/' + self.draftFactory._id,
-        headers: {
-          uid: self.authFactory.uid
-        }
-      })
-        .then(function(){
-          $location.path('/drafts');
-        });
+      deleteDraft();
     }
+  }
+
+  function deleteDraft(){
+    $http({
+      method: 'DELETE',
+      url: '/db/draft/deleteDraft/' + self.draftFactory._id,
+      headers: {
+        uid: self.authFactory.uid
+      }
+    })
+      .then(function(){
+        $location.path('/drafts');
+      });
   }
 
 }]);

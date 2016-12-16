@@ -1,7 +1,9 @@
 <div ng-controller="HeaderController as header">
   <div id="userTwitterInfo">
-    <img ng-src="{{ header.factory.photoURL }}" />
-    <h3>{{ header.factory.username }}</h3>
+    <a ng-href="http://twitter.com/{{header.factory.username}}">
+      <img ng-src="{{ header.factory.photoURL }}" />
+      <h3>{{ header.factory.username }}</h3>
+    </a>
   </div>
   <h3 id="appName">Crow</h3>
 </div>
