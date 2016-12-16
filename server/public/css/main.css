@@ -87,6 +87,14 @@ textarea {
   height: 200px;
 }
 
+.center {
+  text-align: center;
+}
+
+.plus {
+  font-size: large;
+}
+
 .draft-item-content {
   background: white;
   border-radius: 5px;

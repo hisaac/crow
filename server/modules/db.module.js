@@ -65,17 +65,16 @@ router.get('/getDrafts/:uid', function(req, res){
   });
 });
 
+router.delete('/draft/deleteDraft/:_id', function(req, res){
+  User.findOne({ uid: req.headers.uid }, function(error, user){
+    user.drafts.pull({ _id: req.params._id });
+    if(error){
+      res.sendStatus(500);
+    } else {
+      user.save();
+      res.sendStatus(200);
+    }
+  });
+});
+
 module.exports = router;
-
-
-// User.findOneAndUpdate(
-//   {
-//     '_id': "5846d71b5de4b846897b0529",
-//     'books._id': req.params.book_id
-//   },
-//   {
-//     $set:
-//       {
-//         'books.$.page_at' : req.body.updatedPageNumber
-//       }
-//   }

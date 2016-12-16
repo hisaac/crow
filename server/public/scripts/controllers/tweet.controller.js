@@ -8,7 +8,7 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
     if(verbose){console.log( 'entered post tweet function' )};
 
     $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
-      .then(function(res){
+      .then(function(){
         $location.path('/drafts');
       });
   };
@@ -16,10 +16,24 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
   self.saveDraft = function(){
     if(verbose){console.log( 'entered save draft function' )};
     $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory)
-      .then(function(res){
+      .then(function(){
         $location.path('/drafts');
       });
   };
+
+  self.deleteDraft = function(){
+    if(verbose){console.log( 'entered delete draft function' )};
+    $http({
+      method: 'DELETE',
+      url: '/db/draft/deleteDraft/' + self.draftFactory._id,
+      headers: {
+        uid: self.authFactory.uid
+      }
+    })
+      .then(function(){
+        $location.path('/drafts');
+      });
+  }
 
 }]);
 
