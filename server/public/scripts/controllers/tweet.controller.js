@@ -7,10 +7,14 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
   self.postTweet = function(){
     if(verbose){console.log( 'entered post tweet function' )};
 
-    $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
+    if(self.draftFactory.text.length > 140){
+      alert("Hold your horses bucko.\nThat's more than 140 characters!");
+    } else {
+      $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
       .then(function(){
         self.deleteDraft();
       });
+    }
   };
 
   self.saveDraft = function(){
@@ -23,16 +27,20 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
 
   self.deleteDraft = function(){
     if(verbose){console.log( 'entered delete draft function' )};
-    $http({
-      method: 'DELETE',
-      url: '/db/draft/deleteDraft/' + self.draftFactory._id,
-      headers: {
-        uid: self.authFactory.uid
-      }
-    })
-      .then(function(){
-        $location.path('/drafts');
-      });
+    var youSure = confirm('Are you sure you want to delete this draft?');
+    
+    if (youSure === true){
+      $http({
+        method: 'DELETE',
+        url: '/db/draft/deleteDraft/' + self.draftFactory._id,
+        headers: {
+          uid: self.authFactory.uid
+        }
+      })
+        .then(function(){
+          $location.path('/drafts');
+        });
+    }
   }
 
 }]);
