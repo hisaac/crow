@@ -1,5 +1,11 @@
 <header ng-include="'./views/templates/header.html'" class="row"></header>
 <main>
+  <div class="container" ng-model="drafts.userDrafts" ng-if="drafts.userDrafts.length < 1">
+    <div class="row center">
+      <h3>You currently have no drafts</h3>
+      <p>Press the + button below to create one</p>
+    </div>
+  </div>
 
   <ul id="draftList">
     <a ng-click="drafts.draftToFactory(this.draft)" ng-href="#tweet" ng-repeat="draft in drafts.userDrafts">

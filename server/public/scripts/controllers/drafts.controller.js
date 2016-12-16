@@ -11,7 +11,7 @@ crow.controller('DraftsController', ['$http', 'DraftFactory', 'AuthFactory', '$l
   function getDrafts(userData){
     $http.get('/db/getDrafts/' + self.authFactory.uid)
       .then(function(res){
-        self.userDrafts = res.data;
+          self.userDrafts = res.data;
       });
   };
 
