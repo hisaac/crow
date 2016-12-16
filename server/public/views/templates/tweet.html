@@ -6,6 +6,9 @@
       <textarea class="u-full-width" id="tweetText" placeholder="Tweet your heart out"
         ng-model="tweet.draftFactory.text"></textarea>
     </div>
+
+    <p>Characters: <span ng-class="{warning: (tweet.draftFactory.text.length > 140)}">{{ tweet.draftFactory.text.length }}</span></p>
+
     <div class="row">
       <button class="button one-half column"
         ng-click="tweet.saveDraft()">

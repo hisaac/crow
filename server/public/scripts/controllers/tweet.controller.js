@@ -9,7 +9,7 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
 
     $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
       .then(function(){
-        $location.path('/drafts');
+        self.deleteDraft();
       });
   };
 
