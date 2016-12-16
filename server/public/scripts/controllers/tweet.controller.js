@@ -23,10 +23,15 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$lo
 
   self.saveDraft = function(){
     if(verbose){console.log( 'entered save draft function' )};
-    $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory)
-      .then(function(){
-        $location.path('/drafts');
-      });
+
+    if(self.draftFactory.text.length === 0){
+      deleteDraft();
+    } else {
+      $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory)
+        .then(function(){
+          $location.path('/drafts');
+        });
+    }
   };
 
   self.deleteDraft = function(){
