@@ -1,4 +1,4 @@
-crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', function($http, AuthFactory, DraftFactory){
+crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', '$location', function($http, AuthFactory, DraftFactory, $location){
   if(verbose){console.log( 'TweetController is running' )};
   var self = this;
   self.authFactory = AuthFactory;
@@ -9,13 +9,16 @@ crow.controller('TweetController', ['$http', 'AuthFactory', 'DraftFactory', func
 
     $http.post('/twitter/postTweet/' + self.draftFactory.text, self.authFactory)
       .then(function(res){
-        console.log(res);
+        $location.path('/drafts');
       });
   };
 
   self.saveDraft = function(){
     if(verbose){console.log( 'entered save draft function' )};
-    $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory);
+    $http.post('/db/draft/saveDraft/' + self.draftFactory.text, self.draftFactory)
+      .then(function(res){
+        $location.path('/drafts');
+      });
   };
 
 }]);

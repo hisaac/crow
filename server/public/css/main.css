@@ -1,3 +1,9 @@
+body {
+  background: #F5F5F5;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
 header {
   background-color: gainsboro;
   width: 100%;
@@ -19,20 +25,34 @@ nav {
   box-shadow: 2px -2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+#loginContent {
+  text-align: center;
+}
+
 #appName {
   text-align: right;
   float: right;
-  margin: 5px;
+  margin: 5px 10px 5px 5px;
+}
+
+#crowLogo {
+  max-width: 250px;
+  display: block;
+  margin: 20px auto;
 }
 
 main {
-  padding: 70px 10px 10px 10px;
   z-index: -1;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 3%;
+  width: 100%;
 }
 
 .nav-buttons {
   display: inline-flex;
-  /*justify-content: space-around;*/
 }
 
 .nav-button {
@@ -44,24 +64,51 @@ main {
   text-align: center;
 }
 
-.draft-item {
+#loginMain {
+  background: white;
+}
+
+/*.draft-item {
   list-style: none;
   background: gainsboro;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
+  position: relative;
+  margin: 15px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}*/
+
+.draft-item {
+  list-style: none;
+  margin: 10px;
+}
+
+textarea {
+  height: 200px;
+}
+
+.draft-item-content {
+  background: white;
+  border-radius: 5px;
+  border: .5px solid #ddd;
+  padding: 5px;
+  max-height: 5em;
+  overflow-y: scroll;
   position: relative;
 }
 
-.draft-date {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: auto 5px;
-  font-size: .9em;
+.draft-text {
+  margin-right: 20px;
+  margin-bottom: 0;
+  float: left;
 }
 
-.draft-text {
-  margin: auto;
+.arrow {
+  /*position: absolute;
+  right: 5px;
+  top: 25%;*/
+  vertical-align: middle;
+  float: right;
 }
 
 #draftList a {
