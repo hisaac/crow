@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var databaseUri = 'mongodb://localhost:27017/crow';
+var databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/crow';
 var twitter = require('./modules/twitter.module');
 var db = require('./modules/db.module');
 require('dotenv').config({path: __dirname + '/.env'});
