@@ -1,12 +1,39 @@
 # Crow
 
-![](./project-assets/images/logo-text.png =500x)
+![](./project-assets/images/logo-text-small.png)
 
 ### Crow is a web app for thoughtful tweeting
 
 Twitter's ease of use is much of what makes it so great, but that low barrier to posting also makes it really easy to make typos, or make regrettable posts. Crow is here to help.
 
 Crow allows you to jot down thoughts as you think of them, and come back to them later for pruning, and post them to Twitter when you're ready.
+
+## Getting Started
+
+### Installing
+
+First, clone Crow to your local machine, and move into that directory.
+
+```shell
+git clone https://github.com/hisaac/crow.git && cd crow
+```
+
+You will need to setup your Mongo database to include the required `crow` database and `users` collection. After starting the Mongo shell, use these commands:
+
+```shell
+use crow
+db.createCollection("users")
+```
+
+Then update NPM, install the required dependencies, and start the server.
+
+```shell
+npm update
+npm install
+node server/app.js
+```
+
+Once installed and started, the site will be live on `http://localhost:3000`.
 
 ### Meta
 
@@ -44,3 +71,7 @@ If you need support when using the app, feel free to contact me at <mailto:hello
 - [Dash](https://kapeli.com/dash)
 - [dotenv](https://github.com/motdotla/dotenv)
 - [Express](http://expressjs.com)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](./LICENSE.md) file for details
