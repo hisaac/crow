@@ -1,6 +1,6 @@
 # Crow
 
-![](./project-assets/images/logo-text.png)
+![](./project-assets/images/logo-text.png =500x)
 
 ### Crow is a web app for thoughtful tweeting
 
