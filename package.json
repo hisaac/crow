@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A place to craft your tweets before posting them",
   "main": "server/app.js",
+    "engines": {
+    "node": "^8.1.4",
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js"
